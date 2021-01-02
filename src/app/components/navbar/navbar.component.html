@@ -1,0 +1,23 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer class="example-sidenav" mode="side" #drawer>
+    <ul style="background-color: aqua">
+      <li>Dashboard</li>
+      <li>Users</li>
+      <li>Questions</li>
+      <li>Tests</li>
+    </ul>
+  </mat-drawer>
+  <mat-drawer-content class="example-sidenav-content">
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Quiz</span>
+      <span class="spacer"></span>
+
+      <button mat-icon-button>
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+  </mat-drawer-content>
+</mat-drawer-container>
