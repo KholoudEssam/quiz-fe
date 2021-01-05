@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Question } from 'src/app/models/question';
 import { TestService } from 'src/app/services/test.service';
@@ -28,12 +29,15 @@ export class QuizQuestionsComponent implements OnInit, OnDestroy {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private testService: TestService
+    private testService: TestService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.sub = this.testService.generatedTestData.subscribe((test) => {
-      console.log('from quiz questions');
+      if (test.qsHeadAndAnswers.length < 1) {
+        return this.router.navigate(['/']);
+      }
       this.questions = test.qsHeadAndAnswers;
       this.testId = test.testId;
     });
@@ -66,6 +70,8 @@ export class QuizQuestionsComponent implements OnInit, OnDestroy {
     const data = { testId: this.testId, testQandA: this.testQandA };
     this.testService.correctTest(data).subscribe((res) => {
       console.log(res);
+      this.testService.changeTestReport(res.userGrade, res.questionsData);
+      this.router.navigate(['/quiz-summary']);
     });
   }
 

@@ -6,3 +6,9 @@ export interface Question {
   thirdChoice: string;
   forthChoice: string;
 }
+
+export interface Report {
+  questionHead: string;
+  userAns: string;
+  correctAns: string;
+}

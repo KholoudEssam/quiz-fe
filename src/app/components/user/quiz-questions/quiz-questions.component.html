@@ -10,7 +10,7 @@
       >
         <div *ngIf="i < 5">
           <ng-template matStepLabel>Q{{ i + 1 }}</ng-template>
-          <h2>{{ questions[i].head }}</h2>
+          <h2>{{ questions[i]?.head }}</h2>
           <mat-radio-group
             formControlName="cont"
             aria-label="Select an option"
@@ -20,49 +20,49 @@
               value="1"
               (click)="
                 getAnswer(
-                  questions[i]._id,
-                  questions[i].head,
-                  questions[i].firstChoice
+                  questions[i]?._id,
+                  questions[i]?.head,
+                  questions[i]?.firstChoice
                 )
               "
             >
-              {{ questions[i].firstChoice }}
+              {{ questions[i]?.firstChoice }}
             </mat-radio-button>
             <mat-radio-button
               value="2"
               (click)="
                 getAnswer(
-                  questions[i]._id,
-                  questions[i].head,
-                  questions[i].secondChoice
+                  questions[i]?._id,
+                  questions[i]?.head,
+                  questions[i]?.secondChoice
                 )
               "
             >
-              {{ questions[i].secondChoice }}
+              {{ questions[i]?.secondChoice }}
             </mat-radio-button>
             <mat-radio-button
               value="3"
               (click)="
                 getAnswer(
-                  questions[i]._id,
-                  questions[i].head,
-                  questions[i].thirdChoice
+                  questions[i]?._id,
+                  questions[i]?.head,
+                  questions[i]?.thirdChoice
                 )
               "
             >
-              {{ questions[i].thirdChoice }}
+              {{ questions[i]?.thirdChoice }}
             </mat-radio-button>
             <mat-radio-button
               value="4"
               (click)="
                 getAnswer(
-                  questions[i]._id,
-                  questions[i].head,
-                  questions[i].forthChoice
+                  questions[i]?._id,
+                  questions[i]?.head,
+                  questions[i]?.forthChoice
                 )
               "
             >
-              {{ questions[i].forthChoice }}
+              {{ questions[i]?.forthChoice }}
             </mat-radio-button>
           </mat-radio-group>
           <div class="btn">

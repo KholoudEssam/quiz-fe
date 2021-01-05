@@ -1,0 +1,13 @@
+.list-container {
+  margin: 7rem 0;
+}
+ul {
+  color: #e466a0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+ul li {
+  padding: 10px;
+}

@@ -4,10 +4,12 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { NavbarComponent } from './components/admin/navbar/navbar.component';
 import { GenerateQuizComponent } from './components/user/generate-quiz/generate-quiz.component';
 import { QuizQuestionsComponent } from './components/user/quiz-questions/quiz-questions.component';
+import { TestReportComponent } from './components/user/test-report/test-report.component';
 
 const routes: Routes = [
   { path: 'admin', component: NavbarComponent },
   { path: 'generate-quiz', component: GenerateQuizComponent },
+  { path: 'quiz-summary', component: TestReportComponent },
   { path: 'quiz', component: QuizQuestionsComponent },
   { path: '', component: LoginComponent },
 ];
