@@ -2,7 +2,8 @@
   <mat-card-header>
     <mat-card-title class="form-title">LOGIN</mat-card-title>
   </mat-card-header>
-  <form class="form" #f="ngForm">
+  <p *ngIf="authError">Invalid credentials</p>
+  <form class="form" #f="ngForm" (ngSubmit)="onLogin(f)">
     <mat-form-field>
       <mat-label>Username</mat-label>
       <span matPrefix> <mat-icon color="primary">person</mat-icon> </span>
@@ -11,11 +12,14 @@
         matInput
         placeholder="username"
         required
-        name="username"
+        pattern="^[a-zA-Z0-9]+$"
         ngModel
-        #username
+        name="username"
+        #username="ngModel"
       />
-      <mat-error *ngIf="username.invalid"> username is required </mat-error>
+      <mat-error *ngIf="username.invalid">
+        Username contains only letters and/or numbers
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -26,14 +30,17 @@
         matInput
         placeholder="password"
         required
+        minlength="6"
         name="password"
         [ngModel]
-        #password
+        #password="ngModel"
       />
-      <mat-error *ngIf="password.invalid"> password is required </mat-error>
+      <mat-error *ngIf="password.invalid">
+        password is required and minmum length 6
+      </mat-error>
     </mat-form-field>
     <button
-      type="button"
+      type="submit"
       mat-raised-button
       color="primary"
       [disabled]="f.invalid"

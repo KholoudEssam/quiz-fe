@@ -1,0 +1,69 @@
+<mat-card>
+  <form [formGroup]="formGroup">
+    <mat-horizontal-stepper formArrayName="form" [linear]="true">
+      <mat-step
+        [formGroupName]="i"
+        editable="false"
+        *ngFor="let fGroup of formGroup.controls.form.controls; let i = index"
+        [completed]="fGroup.get('cont').valid"
+        [stepControl]="fGroup.get('cont').valid"
+      >
+        <div *ngIf="i < 5">
+          <ng-template matStepLabel>Q{{ i + 1 }}</ng-template>
+          <h2>{{ questions[i].head }}</h2>
+          <mat-radio-group
+            formControlName="cont"
+            aria-label="Select an option"
+            required
+          >
+            <mat-radio-button
+              value="1"
+              (click)="getAnswer('a', questions[i]._id)"
+            >
+              {{ questions[i].firstChoice }}
+            </mat-radio-button>
+            <mat-radio-button
+              value="2"
+              (click)="getAnswer('b', questions[i]._id)"
+            >
+              {{ questions[i].secondChoice }}
+            </mat-radio-button>
+            <mat-radio-button
+              value="3"
+              (click)="getAnswer('c', questions[i]._id)"
+            >
+              {{ questions[i].thirdChoice }}
+            </mat-radio-button>
+            <mat-radio-button
+              value="4"
+              (click)="getAnswer('d', questions[i]._id)"
+            >
+              {{ questions[i].forthChoice }}
+            </mat-radio-button>
+          </mat-radio-group>
+          <div style="float: right">
+            <button
+              mat-stroked-button
+              *ngIf="i !== 4 && fGroup.get('cont').valid"
+              color="primary"
+              matStepperNext
+              (click)="addItem()"
+              style="margin-left: 10px"
+            >
+              Next
+            </button>
+            <button
+              mat-raised-button
+              color="primary"
+              *ngIf="i === 4 && fGroup.get('cont').valid"
+              style="margin-left: 10px"
+              (click)="openModal(finish, c1)"
+            >
+              Finish
+            </button>
+          </div>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </form>
+</mat-card>

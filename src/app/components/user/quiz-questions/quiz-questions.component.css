@@ -1,0 +1,11 @@
+mat-card {
+  width: 80%;
+  margin: 7rem auto;
+}
+h2 {
+  margin-bottom: 10px;
+}
+.mat-radio-button ~ .mat-radio-button {
+  display: block;
+  margin: 10px 0;
+}

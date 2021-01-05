@@ -1,23 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarComponent } from './components/admin/navbar/navbar.component';
 import { AppNgMaterialModule } from './app-ng-material.module';
-import { AdminSidenavComponent } from './components/admin-sidenav/admin-sidenav.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/shared/login/login.component';
+import { GenerateQuizComponent } from './components/user/generate-quiz/generate-quiz.component';
+import { AuthInterceptor } from './services/auth-interceptor';
+import { QuizQuestionsComponent } from './components/user/quiz-questions/quiz-questions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    AdminSidenavComponent,
     LoginComponent,
+    GenerateQuizComponent,
+    QuizQuestionsComponent,
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, AppNgMaterialModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    AppNgMaterialModule,
+    HttpClientModule,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

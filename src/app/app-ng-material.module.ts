@@ -8,6 +8,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatRadioModule } from '@angular/material/radio';
 
 const modules = [
   MatToolbarModule,
@@ -17,6 +19,8 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatCardModule,
+  MatStepperModule,
+  MatRadioModule,
 ];
 
 @NgModule({
