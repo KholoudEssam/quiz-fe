@@ -1,11 +1,35 @@
-<div>
-  <button
-    type="button"
-    mat-button
-    mat-raised-button
-    color="warn"
-    (click)="onGenerateTest()"
-  >
-    Generate Test
-  </button>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Quiz Instructions</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <li>The quiz contains 5 questions and there is no time limit.</li>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <li>
+          You will get 1 point for each correct answer. At the end of the Quiz,
+          your total score will be displayed.
+        </li>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <li>
+          You can not quit the quiz before answering all questions or your
+          answers will be discarded.
+        </li>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      type="button"
+      mat-button
+      mat-raised-button
+      color="accent"
+      (click)="onGenerateTest()"
+    >
+      Start the Quiz
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -16,9 +17,7 @@ export class LoginComponent implements OnInit {
     this.authError = false;
   }
 
-  onLogin(data) {
-    // this.authError = !this.authError;
-
+  onLogin(data: NgForm) {
     this.authService.login(data.value.username, data.value.password).subscribe(
       (res) => {
         console.log(res);
@@ -30,8 +29,9 @@ export class LoginComponent implements OnInit {
         if (res.role === 'student') this.route.navigate(['/generate-quiz']);
       },
       (err) => {
+        data.resetForm();
         this.authError = true;
-        console.log(err.error);
+        // console.log(err.error);
       }
     );
   }

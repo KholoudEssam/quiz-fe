@@ -2,9 +2,16 @@
   width: 50%;
   margin: 7rem auto;
 }
+mat-card-header {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
 .form-title {
-  color: green;
-  text-align: center;
+  color: #313e88;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
 }
 .form {
   padding: 10px;
@@ -13,10 +20,28 @@
 }
 .form mat-form-field {
   margin: 3px;
+  margin-bottom: 6px;
 }
-.form mat-form-field input:hover {
-  border-color: yellow;
-}
+
 .form mat-icon {
   margin-right: 10px;
+}
+.form button {
+  margin-top: 20px;
+  font-size: 17px;
+}
+
+.invalidInputs {
+  color: #f44336;
+  text-align: center;
+  margin: 5px;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+@media only screen and (max-width: 600px) {
+  .form-container {
+    width: 75%;
+  }
 }

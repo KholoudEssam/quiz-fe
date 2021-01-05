@@ -9,3 +9,13 @@ h2 {
   display: block;
   margin: 10px 0;
 }
+
+.btn {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn button {
+  width: 25%;
+  font-weight: 1.2rem;
+  font-weight: 600;
+}

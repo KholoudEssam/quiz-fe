@@ -11,6 +11,7 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { GenerateQuizComponent } from './components/user/generate-quiz/generate-quiz.component';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { QuizQuestionsComponent } from './components/user/quiz-questions/quiz-questions.component';
+import { TestReportComponent } from './components/user/test-report/test-report.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { QuizQuestionsComponent } from './components/user/quiz-questions/quiz-qu
     LoginComponent,
     GenerateQuizComponent,
     QuizQuestionsComponent,
+    TestReportComponent,
   ],
   imports: [
     BrowserModule,

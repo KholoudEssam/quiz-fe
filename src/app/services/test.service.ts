@@ -26,4 +26,8 @@ export class TestService {
       `${this.apiUrl}/tests/generate`
     );
   }
+
+  correctTest(data) {
+    return this.http.post(`${this.apiUrl}/tests/correct`, data);
+  }
 }

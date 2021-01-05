@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title class="form-title">LOGIN</mat-card-title>
   </mat-card-header>
-  <p *ngIf="authError">Invalid credentials</p>
+  <p *ngIf="authError" class="invalidInputs">Invalid username or password</p>
   <form class="form" #f="ngForm" (ngSubmit)="onLogin(f)">
     <mat-form-field>
       <mat-label>Username</mat-label>

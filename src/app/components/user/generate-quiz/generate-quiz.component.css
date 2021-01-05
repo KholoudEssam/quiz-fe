@@ -1,4 +1,33 @@
-div {
+mat-card {
+  width: 70%;
+  margin: 7rem auto;
+}
+
+mat-card-actions {
   display: flex;
-  align-content: center;
+  justify-content: flex-end;
+}
+mat-card-title {
+  margin-top: 0.75rem;
+}
+mat-card-actions button {
+  margin-right: 2.5rem !important;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 650px) {
+  mat-card {
+    width: 90%;
+  }
+  li {
+    font-size: 14px;
+    margin: 10px 0;
+  }
+  mat-list {
+    padding: 15px 0;
+  }
+  mat-list-item {
+    font-size: smaller;
+    margin: 7px 0;
+  }
 }

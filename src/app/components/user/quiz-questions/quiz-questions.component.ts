@@ -20,8 +20,10 @@ export class QuizQuestionsComponent implements OnInit, OnDestroy {
   formArr: FormArray;
 
   createdForms = 0;
-  answerClicked = false;
+
   questions: Question[] = [];
+  testQandA = [];
+  testId: string;
   sub: Subscription;
 
   constructor(
@@ -32,49 +34,8 @@ export class QuizQuestionsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.testService.generatedTestData.subscribe((test) => {
       console.log('from quiz questions');
-      // this.questions = test.qsHeadAndAnswers;
-      this.questions.push({
-        head: 'A relational database developer refers to a record as',
-        firstChoice: 'A criteria',
-        secondChoice: 'A relation',
-        thirdChoice: 'A tuple',
-        forthChoice: 'An attribute',
-        _id: '12345678912345',
-      });
-      this.questions.push({
-        head: 'A relational database developer refers to a record as',
-        firstChoice: 'A criteria',
-        secondChoice: 'A relation',
-        thirdChoice: 'A tuple',
-        forthChoice: 'An attribute',
-        _id: '12345678912345',
-      });
-      this.questions.push({
-        head: 'A relational database developer refers to a record as',
-        firstChoice: 'A criteria',
-        secondChoice: 'A relation',
-        thirdChoice: 'A tuple',
-        forthChoice: 'An attribute',
-        _id: '12345678912345',
-      });
-      this.questions.push({
-        head: 'A relational database developer refers to a record as',
-        firstChoice: 'A criteria',
-        secondChoice: 'A relation',
-        thirdChoice: 'A tuple',
-        forthChoice: 'An attribute',
-        _id: '12345678912345',
-      });
-      this.questions.push({
-        head: 'A relational database developer refers to a record as',
-        firstChoice: 'A criteria',
-        secondChoice: 'A relation',
-        thirdChoice: 'A tuple',
-        forthChoice: 'An attribute',
-        _id: '12345678912345',
-      });
-      console.log(test.testId);
-      console.log(test.qsHeadAndAnswers);
+      this.questions = test.qsHeadAndAnswers;
+      this.testId = test.testId;
     });
 
     this.formGroup = this._formBuilder.group({
@@ -97,11 +58,15 @@ export class QuizQuestionsComponent implements OnInit, OnDestroy {
     this.createdForms++;
   }
 
-  getAnswer(a, id) {
-    this.answerClicked = true;
-    console.log(a);
-    console.log(id);
-    console.log(this.formGroup.controls.form.value);
+  getAnswer(questionId, questionHead, userAnswer) {
+    this.testQandA.push({ questionId, questionHead, userAnswer });
+  }
+
+  submitTest() {
+    const data = { testId: this.testId, testQandA: this.testQandA };
+    this.testService.correctTest(data).subscribe((res) => {
+      console.log(res);
+    });
   }
 
   ngOnDestroy() {

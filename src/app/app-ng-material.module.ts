@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatListModule } from '@angular/material/list';
 
 const modules = [
   MatToolbarModule,
@@ -21,6 +22,7 @@ const modules = [
   MatCardModule,
   MatStepperModule,
   MatRadioModule,
+  MatListModule,
 ];
 
 @NgModule({

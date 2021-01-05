@@ -18,37 +18,60 @@
           >
             <mat-radio-button
               value="1"
-              (click)="getAnswer('a', questions[i]._id)"
+              (click)="
+                getAnswer(
+                  questions[i]._id,
+                  questions[i].head,
+                  questions[i].firstChoice
+                )
+              "
             >
               {{ questions[i].firstChoice }}
             </mat-radio-button>
             <mat-radio-button
               value="2"
-              (click)="getAnswer('b', questions[i]._id)"
+              (click)="
+                getAnswer(
+                  questions[i]._id,
+                  questions[i].head,
+                  questions[i].secondChoice
+                )
+              "
             >
               {{ questions[i].secondChoice }}
             </mat-radio-button>
             <mat-radio-button
               value="3"
-              (click)="getAnswer('c', questions[i]._id)"
+              (click)="
+                getAnswer(
+                  questions[i]._id,
+                  questions[i].head,
+                  questions[i].thirdChoice
+                )
+              "
             >
               {{ questions[i].thirdChoice }}
             </mat-radio-button>
             <mat-radio-button
               value="4"
-              (click)="getAnswer('d', questions[i]._id)"
+              (click)="
+                getAnswer(
+                  questions[i]._id,
+                  questions[i].head,
+                  questions[i].forthChoice
+                )
+              "
             >
               {{ questions[i].forthChoice }}
             </mat-radio-button>
           </mat-radio-group>
-          <div style="float: right">
+          <div class="btn">
             <button
               mat-stroked-button
               *ngIf="i !== 4 && fGroup.get('cont').valid"
               color="primary"
               matStepperNext
               (click)="addItem()"
-              style="margin-left: 10px"
             >
               Next
             </button>
@@ -56,8 +79,7 @@
               mat-raised-button
               color="primary"
               *ngIf="i === 4 && fGroup.get('cont').valid"
-              style="margin-left: 10px"
-              (click)="openModal(finish, c1)"
+              (click)="submitTest()"
             >
               Finish
             </button>
