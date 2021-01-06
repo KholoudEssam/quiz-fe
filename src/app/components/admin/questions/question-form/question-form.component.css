@@ -1,0 +1,49 @@
+.form-container {
+  width: 75%;
+  margin: 3rem auto;
+}
+mat-card-header {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.form-title {
+  color: #313e88;
+  font-size: 21px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.form mat-form-field {
+  margin: 3px;
+  margin-bottom: 6px;
+}
+
+.form button {
+  margin-top: 20px;
+  font-size: 17px;
+}
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+mat-radio-group mat-radio-button {
+  margin: 4px 0;
+}
+.invalidInputs {
+  color: #f44336;
+  text-align: center;
+  margin: 5px;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 3px;
+}
+@media only screen and (max-width: 600px) {
+  .form-container {
+    width: 75%;
+  }
+}

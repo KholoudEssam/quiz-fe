@@ -1,0 +1,144 @@
+<app-spinner *ngIf="!isLoaded"></app-spinner>
+<mat-card class="form-container" *ngIf="isLoaded">
+  <mat-card-header>
+    <mat-card-title class="form-title" *ngIf="editMode"
+      >Edit Question</mat-card-title
+    >
+    <mat-card-title class="form-title" *ngIf="!editMode"
+      >Add Question</mat-card-title
+    >
+  </mat-card-header>
+  <p *ngIf="invalidData" class="invalidInputs">
+    The correct choice is not one of the 4 choices!!!
+  </p>
+  <p *ngIf="invalidQsHead" class="invalidInputs">Question is already exist.</p>
+
+  <form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-form-field>
+      <mat-label>Head</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Question head"
+        required
+        [(ngModel)]="question.head"
+        name="head"
+        #head="ngModel"
+      />
+      <mat-error *ngIf="head.invalid"> Question head is required. </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>First Choice</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="First Choice"
+        required
+        [(ngModel)]="question.firstChoice"
+        name="firstChoice"
+        #firstChoice="ngModel"
+      />
+      <mat-error *ngIf="firstChoice.invalid">
+        First choice is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Second Choice</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Second Choice"
+        required
+        [(ngModel)]="question.secondChoice"
+        name="secondChoice"
+        #secondChoice="ngModel"
+      />
+      <mat-error *ngIf="secondChoice.invalid">
+        Second choice is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Third Choice</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Third choice"
+        required
+        [(ngModel)]="question.thirdChoice"
+        name="thirdChoice"
+        #thirdChoice="ngModel"
+      />
+      <mat-error *ngIf="thirdChoice.invalid">
+        Third choice is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Forth Choice</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Forth Choice"
+        required
+        [(ngModel)]="question.forthChoice"
+        name="forthChoice"
+        #forthChoice="ngModel"
+      />
+      <mat-error *ngIf="forthChoice.invalid">
+        Forth choice is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Correct Choice</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Correct choice"
+        required
+        [(ngModel)]="question.correctAnswer"
+        name="correctAnswer"
+        #correctAnswer="ngModel"
+      />
+      <mat-error *ngIf="correctAnswer.invalid">
+        Correct choice is required.
+      </mat-error>
+    </mat-form-field>
+    <!-- <mat-label style="margin-bottom: 5px"
+      >Select Correct Answer from the choices</mat-label
+    >
+    <mat-radio-group
+      required
+      ngModel
+      name="correctAnswer"
+      #correctAnswer="ngModel"
+    >
+      <mat-radio-button
+        value="firstChoice"
+        (click)="getSelected(firstChoice.value)"
+        >First Choice</mat-radio-button
+      >
+      <mat-radio-button
+        value="secondChoice"
+        (click)="getSelected(secondChoice.value)"
+        >Second Choice</mat-radio-button
+      >
+      <mat-radio-button
+        value="thirdChoice"
+        (click)="getSelected(thirdChoice.value)"
+        >Third Choice</mat-radio-button
+      >
+      <mat-radio-button
+        value="forthChoice"
+        (click)="getSelected(forthChoice.value)"
+        >Forth Choice</mat-radio-button
+      >
+    </mat-radio-group> -->
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >
+      {{ editMode ? "Edit" : "Add" }}
+    </button>
+  </form>
+</mat-card>

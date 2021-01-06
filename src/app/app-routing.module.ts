@@ -1,14 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/shared/login/login.component';
-import { NavbarComponent } from './components/admin/navbar/navbar.component';
 import { GenerateQuizComponent } from './components/user/generate-quiz/generate-quiz.component';
 import { QuizQuestionsComponent } from './components/user/quiz-questions/quiz-questions.component';
 import { TestReportComponent } from './components/user/test-report/test-report.component';
 import { AuthGuard } from './services/auth.guard';
+import { NavComponent } from './components/admin/nav/nav.component';
+import { QuestionsComponent } from './components/admin/questions/questions.component';
+import { UsersComponent } from './components/admin/users/users.component';
+import { QuestionFormComponent } from './components/admin/questions/question-form/question-form.component';
 
 const routes: Routes = [
-  { path: 'admin', component: NavbarComponent },
+  {
+    path: 'admin',
+    component: NavComponent,
+    children: [
+      { path: 'question/add', component: QuestionFormComponent },
+      { path: 'question/:id', component: QuestionFormComponent },
+      { path: 'questions', component: QuestionsComponent },
+      { path: 'users', component: UsersComponent },
+    ],
+  },
   {
     path: 'generate-quiz',
     component: GenerateQuizComponent,
