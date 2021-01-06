@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Report } from 'src/app/models/question';
 import { TestService } from 'src/app/services/test.service';
@@ -11,19 +13,25 @@ import { TestService } from 'src/app/services/test.service';
 export class TestReportComponent implements OnInit, OnDestroy {
   sub: Subscription;
   qsData: Report[];
-  items = [1, 2, 3, 4, 5];
-  userAnswer: string;
-  constructor(private testService: TestService) {}
+  userGrade: string;
+  displayedColumns: string[] = ['questionHead', 'userAns', 'correctAns'];
+  dataSource: MatTableDataSource<Report>;
+
+  constructor(private testService: TestService, private router: Router) {}
 
   ngOnInit(): void {
     this.sub = this.testService.testReportData.subscribe((data) => {
+      if (data.questionsData.length < 1) return this.router.navigate(['/']);
       this.qsData = data.questionsData;
-      this.userAnswer = data.userGrade;
-      console.log(data.questionsData);
-      console.log(data.userGrade);
+      this.userGrade = data.userGrade;
+      this.dataSource = new MatTableDataSource(this.qsData);
+      // console.log(data.questionsData);
+      // console.log(data.userGrade);
     });
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
   }
 }

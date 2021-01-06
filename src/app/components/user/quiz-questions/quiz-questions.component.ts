@@ -63,13 +63,19 @@ export class QuizQuestionsComponent implements OnInit, OnDestroy {
   }
 
   getAnswer(questionId, questionHead, userAnswer) {
+    for (let i = 0; i < this.testQandA.length; i++) {
+      if (this.testQandA[i].questionId === questionId) {
+        this.testQandA[i].userAnswer = userAnswer;
+        return;
+      }
+    }
     this.testQandA.push({ questionId, questionHead, userAnswer });
   }
 
   submitTest() {
     const data = { testId: this.testId, testQandA: this.testQandA };
     this.testService.correctTest(data).subscribe((res) => {
-      console.log(res);
+      // console.log(res);
       this.testService.changeTestReport(res.userGrade, res.questionsData);
       this.router.navigate(['/quiz-summary']);
     });

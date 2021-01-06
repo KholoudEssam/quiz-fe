@@ -12,6 +12,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
 
 const modules = [
   MatToolbarModule,
@@ -25,6 +26,7 @@ const modules = [
   MatRadioModule,
   MatListModule,
   MatDividerModule,
+  MatTableModule,
 ];
 
 @NgModule({

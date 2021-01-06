@@ -15,12 +15,12 @@ export class GenerateQuizComponent implements OnInit {
   onGenerateTest() {
     this.testService.generateTest().subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.testService.changeTest(res.testId, res.qsHeadAndAnswers);
         this.router.navigate(['/quiz']);
       },
       (err) => {
-        console.log(err.error);
+        // console.log(err.error);
       }
     );
   }
