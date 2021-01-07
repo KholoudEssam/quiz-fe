@@ -10,6 +10,7 @@ import { QuestionsComponent } from './components/admin/questions/questions.compo
 import { UsersComponent } from './components/admin/users/users.component';
 import { QuestionFormComponent } from './components/admin/questions/question-form/question-form.component';
 import { UserFormComponent } from './components/admin/users/user-form/user-form.component';
+import { TestsComponent } from './components/admin/tests/tests.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'question/add', component: QuestionFormComponent },
       { path: 'question/:id', component: QuestionFormComponent },
       { path: 'questions', component: QuestionsComponent },
+      { path: 'tests', component: TestsComponent },
       { path: 'users/add', component: UserFormComponent },
       { path: 'users/:id', component: UserFormComponent },
       { path: 'users', component: UsersComponent },

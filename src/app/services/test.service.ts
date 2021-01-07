@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Question, Report } from '../models/question';
+import { UserTest } from '../models/user-test';
 
 @Injectable({
   providedIn: 'root',
@@ -41,5 +42,12 @@ export class TestService {
       `${this.apiUrl}/tests/correct`,
       data
     );
+  }
+
+  getTests() {
+    return this.http.get<UserTest[]>(`${this.apiUrl}/tests/users-tests`);
+  }
+  deleteTest(id) {
+    return this.http.delete(`${this.apiUrl}/tests/${id}`);
   }
 }
