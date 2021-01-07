@@ -1,6 +1,7 @@
 .form-container {
   width: 75%;
   margin: 3rem auto;
+  margin-bottom: 0;
 }
 mat-card-header {
   display: flex;

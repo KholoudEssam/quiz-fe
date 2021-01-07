@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userId', res.userId);
         localStorage.setItem('token', res.token);
         localStorage.setItem('username', res.username);
-        if (res.role === 'admin') this.route.navigate(['/admin']);
+        if (res.role === 'admin') this.route.navigate(['/admin/users']);
 
         if (res.role === 'student') this.route.navigate(['/generate-quiz']);
       },

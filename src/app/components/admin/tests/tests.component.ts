@@ -29,6 +29,7 @@ import { UserTest } from 'src/app/models/user-test';
 })
 export class TestsComponent implements OnInit {
   dataSource: MatTableDataSource<UserTest>;
+  data: UserTest[];
   isLoaded = false;
   columnsToDisplay = ['username', 'userGrade', 'op'];
   expandedElement: UserTest | null;
@@ -39,8 +40,11 @@ export class TestsComponent implements OnInit {
 
   ngOnInit(): void {
     this.testService.getTests().subscribe((res) => {
-      console.log(res);
-      this.dataSource = new MatTableDataSource(res);
+      // console.log(res);
+      this.data = res.filter((el) => {
+        return el.userId !== null;
+      });
+      this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;
       this.isLoaded = true;
     });
