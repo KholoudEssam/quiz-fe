@@ -26,6 +26,7 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
         <a
+          *ngIf="element.adminID.username === currentUser"
           style="text-decoration: none; color: #3f51b5; outline: none"
           [routerLink]="['/admin/question', element._id]"
         >

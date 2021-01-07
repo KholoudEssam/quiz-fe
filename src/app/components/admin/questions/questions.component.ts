@@ -29,13 +29,17 @@ import { MatPaginator } from '@angular/material/paginator';
 export class QuestionsComponent implements OnInit {
   dataSource: MatTableDataSource<Question>;
   isLoaded = false;
+  currentUser = '';
+  // loggedInUserAuth = false;
   columnsToDisplay = ['head', 'correctAnswer', 'adminID', 'op'];
   expandedElement: Question | null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private questionService: QuestionService) {}
   ngOnInit(): void {
+    this.currentUser = localStorage.getItem('username');
     this.questionService.getQuestions().subscribe((res) => {
+      // if(localStorage.getItem('userId') === res.quests[0].adminID.username)
       this.dataSource = new MatTableDataSource(res.quests);
       this.dataSource.paginator = this.paginator;
       this.isLoaded = true;

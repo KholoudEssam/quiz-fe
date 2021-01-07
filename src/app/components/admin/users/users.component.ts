@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService) {}
   ngOnInit(): void {
     this.userService.getUsers().subscribe((res) => {
-      console.log(res);
+      // console.log(res);
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
       this.isLoaded = true;

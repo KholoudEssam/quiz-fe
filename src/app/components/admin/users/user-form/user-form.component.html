@@ -1,0 +1,83 @@
+<app-spinner *ngIf="!isLoaded"></app-spinner>
+<mat-card class="form-container" *ngIf="isLoaded">
+  <mat-card-header>
+    <mat-card-title class="form-title" *ngIf="editMode"
+      >Edit User</mat-card-title
+    >
+    <mat-card-title class="form-title" *ngIf="!editMode"
+      >Add User</mat-card-title
+    >
+  </mat-card-header>
+  <p *ngIf="invalidusername" class="invalidInputs">User is already exist.</p>
+
+  <form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="username"
+        required
+        pattern="^[a-zA-Z0-9]+$"
+        [(ngModel)]="user.username"
+        name="username"
+        #username="ngModel"
+      />
+      <mat-error *ngIf="username.invalid">
+        Username contains only letters and/or numbers
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!editMode">
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="password"
+        required
+        minlength="6"
+        ngModel
+        name="password"
+        #password="ngModel"
+      />
+      <mat-error *ngIf="password.invalid">
+        password is required and minmum length 6
+      </mat-error>
+    </mat-form-field>
+
+    <div *ngIf="!editMode">
+      <mat-label style="margin-bottom: 5px">Select User's role:</mat-label>
+      <mat-radio-group required ngModel name="role" #role="ngModel">
+        <mat-radio-button value="student" (click)="getSelected('student')"
+          >Student</mat-radio-button
+        >
+        <mat-radio-button value="admin" (click)="getSelected('admin')"
+          >Admin</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field *ngIf="adminSelected">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="Email"
+        email
+        required
+        ngModel
+        name="email"
+        #email="ngModel"
+      />
+      <mat-error *ngIf="email.invalid"> Email is required. </mat-error>
+    </mat-form-field>
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="f.invalid"
+    >
+      {{ editMode ? "Edit" : "Add" }}
+    </button>
+  </form>
+</mat-card>

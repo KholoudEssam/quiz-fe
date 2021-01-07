@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Report } from 'src/app/models/question';
+import { AuthService } from 'src/app/services/auth.service';
 import { TestService } from 'src/app/services/test.service';
 
 @Component({
@@ -17,7 +18,11 @@ export class TestReportComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['questionHead', 'userAns', 'correctAns'];
   dataSource: MatTableDataSource<Report>;
 
-  constructor(private testService: TestService, private router: Router) {}
+  constructor(
+    private testService: TestService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.sub = this.testService.testReportData.subscribe((data) => {
@@ -31,7 +36,6 @@ export class TestReportComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
+    this.authService.logout();
   }
 }

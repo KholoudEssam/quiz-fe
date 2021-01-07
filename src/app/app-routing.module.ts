@@ -9,6 +9,7 @@ import { NavComponent } from './components/admin/nav/nav.component';
 import { QuestionsComponent } from './components/admin/questions/questions.component';
 import { UsersComponent } from './components/admin/users/users.component';
 import { QuestionFormComponent } from './components/admin/questions/question-form/question-form.component';
+import { UserFormComponent } from './components/admin/users/user-form/user-form.component';
 
 const routes: Routes = [
   {
@@ -18,8 +19,11 @@ const routes: Routes = [
       { path: 'question/add', component: QuestionFormComponent },
       { path: 'question/:id', component: QuestionFormComponent },
       { path: 'questions', component: QuestionsComponent },
+      { path: 'users/add', component: UserFormComponent },
+      { path: 'users/:id', component: UserFormComponent },
       { path: 'users', component: UsersComponent },
     ],
+    canActivate: [AuthGuard],
   },
   {
     path: 'generate-quiz',

@@ -10,7 +10,16 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
+  getUser(id) {
+    return this.http.get<User>(`${this.apiUrl}/users/${id}`);
+  }
   getUsers() {
     return this.http.get<User[]>(`${this.apiUrl}/users`);
+  }
+  addUser(data: User) {
+    return this.http.post(`${this.apiUrl}/users`, data);
+  }
+  updateUser(id, data: User) {
+    return this.http.put(`${this.apiUrl}/users/${id}`, data);
   }
 }

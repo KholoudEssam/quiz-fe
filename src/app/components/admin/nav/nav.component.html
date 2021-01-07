@@ -8,7 +8,7 @@
     [opened]="(isHandset$ | async) === false"
   >
     <mat-toolbar style="background-color: #3f51b5; color: #fff"
-      >Menu
+      ><mat-icon>person</mat-icon>{{ currentUser }}
     </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/admin/questions" routerLinkActive="active"
@@ -34,7 +34,7 @@
       <span>Quiz</span>
       <span class="spacer"></span>
 
-      <button mat-icon-button>
+      <button mat-icon-button (click)="onLogout()">
         <mat-icon>logout</mat-icon>
       </button>
     </mat-toolbar>

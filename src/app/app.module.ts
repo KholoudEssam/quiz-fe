@@ -16,6 +16,7 @@ import { QuestionsComponent } from './components/admin/questions/questions.compo
 import { UsersComponent } from './components/admin/users/users.component';
 import { QuestionFormComponent } from './components/admin/questions/question-form/question-form.component';
 import { SpinnerComponent } from './components/shared/spinner/spinner.component';
+import { UserFormComponent } from './components/admin/users/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SpinnerComponent } from './components/shared/spinner/spinner.component'
     UsersComponent,
     QuestionFormComponent,
     SpinnerComponent,
+    UserFormComponent,
   ],
   imports: [
     BrowserModule,
